@@ -7,16 +7,19 @@ use CodeIgniter\Model;
 class UsersModel extends Model {
     protected $table = 'users';
 
-    public function getUsers($filter, $sortBy, $pageNo, $pageSize)
+    public function getUsers($filter, $sortBy, $pageOffset, $pageSize)
     {
         $result = $this->builder()->select('*')
             ->where('(1=1) ' . $filter)
             ->orderBy($sortBy)
-            ->limit($pageNo, $pageSize)
+            ->limit($pageOffset, $pageSize)
             ->get()->getResult();
         return $result;
     }
 
+    /**
+     * FOR BUSINESS LOGIN
+     */
     public function getUserByEmail($user_email)
     {
         $result = $this->builder()->select('*')
@@ -25,6 +28,9 @@ class UsersModel extends Model {
         return $result;
     }
 
+    /**
+     * FOR CUSTOMERS LOGIN
+     */
     public function getUserByEmailMobile($user_email, $user_mobile)
     {
         $result = $this->builder()->select('*')
