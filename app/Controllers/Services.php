@@ -12,9 +12,9 @@ class Services extends BaseController
         return view('unauthorized_access');
     }
 
-    // public function testMail() {
-    //     $mailer = new Mailer();
-    //     $res = $mailer->sendMail('suranju@yahoo.com', 'Welcome Message', 'Hello! How are you?');
-    //     echo $res;
-    // }
+    public function testMail() {
+        $mailer = new Mailer();
+        $res = $mailer->sendMail('suranju@yahoo.com', 'Welcome Message', 'Hello! How are you?');
+        echo $res;
+    }
 }

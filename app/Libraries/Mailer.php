@@ -9,19 +9,22 @@ class Mailer
         $config['protocol'] = 'smtp';
         $config['SMTPHost'] = 'mail.knoxxbox.in';
         $config['SMTPPort'] = '587';
-        $config['SMTPUser'] = 'sales@knoxxbox.in';
-        $config['SMTPPass'] = 'Godzilla0410';
+        $config['SMTPUser'] = 'netfin@knoxxbox.in';
+        $config['SMTPPass'] = '8Zaf68BudJam';
         $config['mailType'] = 'html';
         $config['charset'] = 'utf-8';
         $config['wordwrap'] = TRUE;
         $config['CRLF'] = "\r\n";
 
         $email = \Config\Services::email();
-        $email->setFrom('sales@knoxxbox.in', 'Knoxxbox');
+        $email->setFrom('netfin@knoxxbox.in', 'Knoxxbox');
         $email->setTo($toAddress);
         $email->setSubject($subject);
         $email->setMessage($message);
-        $email->send();
-        return $email->printDebugger(['headers']);
+        $sent = $email->send();
+        if ($sent)
+            return 'SUCCESS';
+        else
+            return $email->printDebugger(['headers']);
     }
 }
